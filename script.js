@@ -7,15 +7,15 @@ toggle.addEventListener("click", () => {
 
 const roleImageMap = {
   model: {
-    src: "assets/images/model1.png",
+    src: "assets/images/model2.png",
     alt: "Fashion model",
   },
   author: {
-    src: "assets/images/book1.jpg",
+    src: "assets/images/book4.png",
     alt: "Published author",
   },
   host: {
-    src: "assets/images/podcast2.jpg",
+    src: "assets/images/podcast1.jpg",
     alt: "Podcast",
   },
   foundation: {
@@ -23,7 +23,7 @@ const roleImageMap = {
     alt: "Foundation",
   },
   clinic: {
-    src: "assets/images/poradnia.jpg",
+    src: "assets/images/poradnia3.png",
     alt: "Poradnia",
   },
 };
@@ -49,5 +49,20 @@ document.querySelectorAll(".roles li").forEach((item) => {
     hoverImageContainer.classList.add("hidden");
     hoverImage.src = "";
     hoverImage.alt = "";
+  });
+});
+
+// Preload all images
+Object.values(roleImageMap).forEach((entry) => {
+  const img = new Image();
+  img.src = entry.src;
+});
+
+document.querySelectorAll(".roles li a").forEach((link) => {
+  link.addEventListener("mouseenter", () => {
+    document.body.classList.add("link-hovering");
+  });
+  link.addEventListener("mouseleave", () => {
+    document.body.classList.remove("link-hovering");
   });
 });
