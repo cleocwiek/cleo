@@ -12,30 +12,32 @@ html {
   background: white;
   color: black;
   font-family: "Work Sans", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Layout */
 main {
   position: relative;
-  z-index: 2;
-  height: 100vh;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 3rem;
+  padding: 4rem;
+  min-height: 100vh;
+  gap: 0rem;
 }
 
-/* Header line: "Cleo Cwiek is..." */
+/* Header line: "Cleo Cwiek" */
 h1 {
   font-family: "Lora", serif;
   font-weight: 400;
   font-size: 4rem;
   font-style: italic;
   cursor: pointer;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   transition: color 0.3s ease;
 }
 
@@ -64,7 +66,7 @@ h1 {
 
 .roles li {
   font-size: 1.2rem;
-  margin: 0.3rem 0;
+  margin: 1rem 0;
   font-family: "Work Sans", sans-serif;
 }
 
@@ -78,18 +80,30 @@ h1 {
   color: #666;
 }
 
-/* Background video */
-#bg-video {
+#hover-image {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#hover-image.visible {
+  opacity: 1;
+}
+
+#hover-image.hidden {
+  opacity: 0;
+}
+
+#hover-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
 }
 
 /* Responsive */

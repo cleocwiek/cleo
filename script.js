@@ -1,49 +1,53 @@
 const toggle = document.getElementById("bio-toggle");
 const bio = document.getElementById("bio");
-const roles = document.querySelectorAll(".roles li");
-const video = document.getElementById("bg-video");
 
-// Toggle bio on click
 toggle.addEventListener("click", () => {
   bio.classList.toggle("hidden");
 });
 
-// Placeholder: Assign background videos
-const videoSources = {
-  model: "assets/videos/model.mp4",
-  author: "assets/videos/author.mp4",
-  host: "assets/videos/host.mp4",
-  foundation: "assets/videos/foundation.mp4",
-  clinic: "assets/videos/clinic.mp4",
+const roleImageMap = {
+  model: {
+    src: "assets/images/model1.png",
+    alt: "Fashion model",
+  },
+  author: {
+    src: "assets/images/book1.jpg",
+    alt: "Published author",
+  },
+  host: {
+    src: "assets/images/podcast2.jpg",
+    alt: "Podcast",
+  },
+  foundation: {
+    src: "assets/images/foundation.png",
+    alt: "Foundation",
+  },
+  clinic: {
+    src: "assets/images/poradnia.jpg",
+    alt: "Poradnia",
+  },
 };
 
-roles.forEach((role) => {
-  const key = role.dataset.role;
+const hoverImageContainer = document.getElementById("hover-image");
+const hoverImage = document.getElementById("hover-image-img");
 
-  role.addEventListener("mouseenter", () => {
-    if (window.innerWidth >= 768 && videoSources[key]) {
-      video.src = videoSources[key];
-      video.style.opacity = 1;
-    }
+document.querySelectorAll(".roles li").forEach((item) => {
+  const role = item.dataset.role;
+
+  item.addEventListener("mouseenter", () => {
+    const data = roleImageMap[role];
+    if (!data) return; // 💥 Prevents crash on "contact"
+
+    hoverImage.src = data.src;
+    hoverImage.alt = data.alt;
+    hoverImageContainer.classList.add("visible");
+    hoverImageContainer.classList.remove("hidden");
   });
 
-  role.addEventListener("mouseleave", () => {
-    if (window.innerWidth >= 768) {
-      video.style.opacity = 0;
-      video.removeAttribute("src");
-    }
-  });
-
-  // Mobile tap workaround
-  role.addEventListener("click", (e) => {
-    if (window.innerWidth < 768) {
-      e.preventDefault();
-      if (video.src.includes(videoSources[key])) {
-        window.location.href = role.querySelector("a").href;
-      } else {
-        video.src = videoSources[key];
-        video.style.opacity = 1;
-      }
-    }
+  item.addEventListener("mouseleave", () => {
+    hoverImageContainer.classList.remove("visible");
+    hoverImageContainer.classList.add("hidden");
+    hoverImage.src = "";
+    hoverImage.alt = "";
   });
 });
