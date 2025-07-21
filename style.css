@@ -113,7 +113,7 @@ body.link-hovering #bio-toggle {
   height: 100vh;
   object-fit: cover;
   object-position: top left;
-  filter: brightness(0.5);
+  filter: brightness(0.4);
 }
 
 /* Responsive */

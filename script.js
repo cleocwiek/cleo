@@ -7,11 +7,11 @@ toggle.addEventListener("click", () => {
 
 const roleImageMap = {
   model: {
-    src: "assets/images/model2.png",
+    src: "assets/images/model8.png",
     alt: "Fashion model",
   },
   author: {
-    src: "assets/images/book4.png",
+    src: "assets/images/book8.png",
     alt: "Published author",
   },
   host: {
@@ -19,11 +19,11 @@ const roleImageMap = {
     alt: "Podcast",
   },
   foundation: {
-    src: "assets/images/foundation.png",
+    src: "assets/images/fundacja8.png",
     alt: "Foundation",
   },
   clinic: {
-    src: "assets/images/poradnia3.png",
+    src: "assets/images/poradnia8.png",
     alt: "Poradnia",
   },
 };
